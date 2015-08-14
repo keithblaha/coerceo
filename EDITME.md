@@ -1,6 +1,6 @@
 I'm trying for best design! To run locally:
 
-```
+```bash
 npm install # might need sudo
 node app.js
 ```
