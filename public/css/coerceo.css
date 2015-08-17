@@ -1,0 +1,72 @@
+body {
+  text-align: center;
+  margin: 0;
+}
+
+html, body, #board-container, #board {
+  height: 100%;
+  max-width: 100%;
+}
+
+#board-container {
+  -webkit-transform: rotateX(45deg) rotateZ(180deg) scale(1);
+  -ms-transform: rotateX(45deg) rotateZ(180deg) scale(1);
+  transform: rotateX(45deg) rotateZ(180deg) scale(1);
+}
+
+.tile.removed {
+  display: none;
+}
+
+.piece {
+  display: none;
+}
+
+.piece.occupied {
+  display: inline;
+}
+
+.piece.valid {
+  display: inline;
+  opacity: 0.5;
+}
+
+.piece.black.selected {
+  fill: #444;
+}
+.piece.white.selected {
+  fill: #aaa;
+}
+
+.piece.occupied.white.nukable {
+  opacity: 0.7;
+}
+.piece.occupied.black.nukable {
+  opacity: 0.7;
+}
+
+#stats-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+#stats-container > div {
+  margin-bottom: 20px;
+}
+
+#stats-container button, #stats-container .you {
+  display: none;
+}
+
+#stats-container.white .white button, #stats-container.white .white .you {
+  display: inline;
+}
+
+#stats-container.black .black button, #stats-container.black .black .you {
+  display: inline;
+}
+
+#stats-container.black .spectator, #stats-container.white .spectator {
+  display: none;
+}

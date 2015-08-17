@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="/static/js/underscore-min.js"></script>
+    <script>
+      _.templateSettings.variable = 'd';
+    </script>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/backbone-min.js"></script>
+    <script src="/static/js/d3.min.js"></script>
+    <script>
+      d3.selection.prototype.moveToFront = function() {
+        return this.each(function(){
+          this.parentNode.appendChild(this);
+        });
+      };
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/static/js/game.js"></script>
+    <script src="/static/js/coerceo.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/coerceo.css">
+  </head>
+  <body>
+  </body>
+</html>
+

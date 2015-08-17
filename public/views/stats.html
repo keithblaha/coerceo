@@ -1,0 +1,17 @@
+<div>
+  <div>Turn <%= d.turn %></div>
+  <div><%= d.turn % 2 === 1 ? 'White' : 'Black' %>'s turn!</div>
+</div>
+<div class="white">
+  <div>White <span class="you">(you)</span></div>
+  <div>Tiles: <%= d.players[0].tiles %></div>
+  <button class="nuke">2 tiles for 1 piece</button>
+</div>
+<div class="black">
+  <div>Black <span class="you">(you)</span></div>
+  <div>Tiles: <%= d.players[1].tiles %></div>
+  <button class="nuke">2 tiles for 1 piece</button>
+</div>
+<div class="spectator">
+  <span>You're spectating</span>
+</div>

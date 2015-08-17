@@ -1,0 +1,101 @@
+<div id="board-container">
+  <svg id="board" viewBox="-200 -500 2000 2200">
+<%
+      var lastCol = 0;
+      var row = -1;
+      _.forEach(d.tiles, function(t, i) {
+        var tileClass = t.isRemoved ? 'removed' : '';
+        var newCol = _.indexOf(['0', '3', '7', '12', '16'], i);
+        var col =  newCol >= 0 ? newCol : lastCol;
+        newCol = false;
+        if(lastCol !== col) {
+          lastCol = col;
+          newCol = true;
+          row = 0;
+        }
+        else {
+          row += 1;
+        }
+        var offsetX = 311 * col;
+        var offsetY = 0;
+        switch(col) {
+          case 1:
+            offsetY = -200;
+            break;
+          case 2:
+            offsetY = -400;
+            break;
+          case 3:
+            offsetY = -200;
+            break;
+        }
+        offsetY += 398 * row;
+%>
+
+        <g class="tile <%= tileClass %>" id="tile-<%= i %>" stroke-linejoin="miter" stroke="#999" stroke-linecap="butt" stroke-dasharray="none" transform="translate(<%= -203.82666 + offsetX %>, <%= -251.16218 + offsetY %>)">
+          <path fill="#999" transform="matrix(0.99973505,0,0,1.1126881,8.0582901,-52.047268)" stroke-miterlimit="4" stroke-width="1" d="m300.01532,273.53458,103.22849,178.797-206.45699-0.00001z"/>
+          <path fill="#999" transform="matrix(0.99973505,0,0,1.1126881,216.1833,-52.047268)" stroke-miterlimit="4" stroke-width="1.00028396" d="m300.01532,273.53458,103.22849,178.797-206.45699-0.00001z"/>
+          <path fill="#999" transform="matrix(0.99973505,0,0,1.1126881,112.12519,148.53087)" stroke-miterlimit="4" stroke-width="1" d="m300.01532,273.53458,103.22849,178.797-206.45699-0.00001z"/>
+          <path d="M309.27029,651.69727c-103.94363-200.54093-103.94363-200.54093-103.94363-200.54093" stroke-miterlimit="3" stroke-width="3" fill="none"/>
+          <path d="M514.86606,651.43124c103.94363-200.54093,103.94363-200.54093,103.94363-200.54093" stroke-miterlimit="3" stroke-width="3" fill="none"/>
+          <path d="m516.11631,252.66218-208.12355,0" stroke-miterlimit="4" stroke-width="3" fill="none"/>
+        </g>
+<%
+        _.forEach(t.faces, function(occupied, j) {
+          var color = j % 2 === 1 ? 'black' : 'white';
+          var pieceId = parseInt(i) * 6 + parseInt(j);
+          if(color === 'black') {
+            var colorHex = '#666';
+            var pieceOffsetX = offsetX - 20;
+            var pieceOffsetY = offsetY - 50;
+            switch(j) {
+              case '1':
+                pieceOffsetX += 210;
+                break;
+              case '3':
+                pieceOffsetX += 105;
+                pieceOffsetY += 200;
+                break;
+            }
+%>
+            <g class="piece <%= color %> <%= occupied ? 'occupied' : '' %>" data-tile-id="<%= i %>"  data-tile-col="<%= col %>" data-tile-row="<%= row %>" data-face="<%= j %>" data-id="<%= pieceId %>" stroke-linejoin="miter" fill-rule="evenodd" stroke="#000" fill="<%= colorHex %>" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="3" transform="translate(<%= pieceOffsetX %>, <%= pieceOffsetY %>) scale(.3)">
+              <path d="M387.92991,915.04922,186.23182,746.16199,450.87771,732.21115,659.71,725.20948z" />
+              <path d="m186.69922,729.11493-0.4674,17.04706,264.64589-13.95084,0.20953-7.64202z" />
+              <path d="m660.08131,711.66713-208.99407,12.902-0.20953,7.64202,208.83229-7.00167z" />
+              <path d="m404.56527,308.3224-217.86605,420.79253,264.38802-4.5458,208.99407-12.902z" />
+              <path d="M404.56527,308.3224,387.92991,915.04922,659.71,725.20948l0.37131-13.54235z" />
+              <path d="m404.56527,308.3224-217.86605,420.79253-0.4674,17.04706,201.69809,168.88723z" />
+            </g>
+<%
+          }
+          else {
+            var colorHex = '#ddd';
+            var pieceOffsetX = offsetX + 690;
+            var pieceOffsetY = offsetY - 360;
+            switch(j) {
+              case '2':
+                pieceOffsetX += 105;
+                pieceOffsetY += 200;
+                break;
+              case '4':
+                pieceOffsetX -= 100;
+                pieceOffsetY += 200;
+                break;
+            }
+%>
+            <g class="piece <%= color %> <%= occupied ? 'occupied' : '' %>" data-tile-id="<%= i %>"  data-tile-col="<%= col %>" data-tile-row="<%= row %>" data-face="<%= j %>" data-id="<%= pieceId %>" fill-rule="evenodd" stroke="#000" fill="<%= colorHex %>" transform="translate(<%= pieceOffsetX %>, <%= pieceOffsetY %>) scale(-1, 1)">
+              <path d="m530.30664,368.65677-121.73394,7.84589,47.3556,25.34796,102.28673-18.25537z" />
+              <path d="m408.5727,376.50266,47.3556,25.34796,27.85847,143.21013-0.31053-0.16622z" />
+              <path d="m558.21503,383.59525-102.28673,18.25537,27.85847,143.21013,1.00621-0.85359z" />
+              <path d="m530.30664,368.65677-121.73394,7.84589,74.90354,168.39187,1.00762-0.85283z" />
+              <path d="m530.30664,368.65677,27.90839,14.93848-73.42205,160.61191-0.30912-0.16546z" />
+              <path d="m484.48386,544.0417-1.00762,0.85283,0.31053,0.16622,1.00621-0.85359z" />
+            </g>
+<%
+          }
+        });
+      });
+%>
+  </svg>
+</div>
+

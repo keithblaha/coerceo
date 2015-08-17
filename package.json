@@ -1,0 +1,14 @@
+{
+  "name": "coerceo",
+  "version": "0.1.0",
+  "main": "app",
+  "dependencies": {
+    "express.io": "1.1.x",
+    "consolidate": "0.12.x",
+    "uuid": "2.0.x",
+
+    "backbone": "1.1.2",
+    "underscore": "1.8.3"
+  }
+}
+

@@ -1,4 +1,6 @@
-I'm trying for best design! To run locally:
+I'm not eligible for any category- but feel free to take a look at my version anyhow!
+
+To run locally:
 
 ```bash
 npm install # might need sudo
